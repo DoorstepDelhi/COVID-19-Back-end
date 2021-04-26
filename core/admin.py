@@ -11,7 +11,7 @@ from .models import (
     Plasma,
 )
 
-admin.site.site_header = "DoorstepDelhi - COVID-19 Resources"
+admin.site.site_header = "DoorstepDelhi.com - COVID-19 Resources"
 
 
 class CityAdmin(ImportExportModelAdmin):

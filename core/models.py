@@ -159,3 +159,20 @@ class Plasma(models.Model):
 
 	def __str__(self):
 		return self.city + " - " + self.blood_group
+
+
+class Request(models.Model):
+	city = models.ForeignKey("core.City", on_delete=models.CASCADE, null=True, blank=True)
+	facility = models.ForeignKey("core.Facility", on_delete=models.CASCADE, null=True, blank=True)
+	name = models.CharField(max_length=150)
+	mobile = models.CharField(max_length=15)
+	alternate_mobile = models.CharField(max_length=15)
+	created_at = models.DateTimeField(auto_now_add=True)
+	note = models.TextField(blank=True, null=True)
+	fulfilled = models.BooleanField(default=False)
+	fulfilled_on = models.DateTimeField(blank=True, null=True)
+	urgent = models.BooleanField(default=False)
+	volunteer_working = models.ForeignKey("core.Volunteer", on_delete=models.SET_NULL, null=True, blank=True)
+
+	def __str__(self):
+		return str(self.name) + "(" + str(self.mobile) + ")"
