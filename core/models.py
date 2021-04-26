@@ -30,7 +30,8 @@ class Facility(models.Model):
 	deliver = models.BooleanField(default=False)
 
 	def __str__(self):
-		return self.name
+		deliver = " (deliver)" if self.deliver else ""
+		return self.name + deliver
 
 	class Meta:
 		verbose_name_plural = "Facilities"
@@ -85,6 +86,7 @@ class Hospital(models.Model):
 	closing_time = models.TimeField(null=True, blank=True)
 	request_edit = models.BooleanField(default=False)
 	edit = models.TextField(blank=True, null=True)
+	note = models.TextField(null=True, blank=True)
 
 	def __str__(self):
 		return str(self.name) + "-(" + str(self.mobile) + ")"
@@ -123,3 +125,37 @@ class Experience(models.Model):
 
 	def __str__(self):
 		return self.service + "by - " + self.name
+
+
+class Plasma(models.Model):
+
+	blood_group_choices = (
+		("A+", "A+"),
+		("A-", "A-"),
+		("B+", "B+"),
+		("B-", "B-"),
+		("O+", "O+"),
+		("O-", "O-"),
+		("AB-", "AB-"),
+		("AB+", "AB+"),
+	)
+
+	city = models.ForeignKey("core.City", on_delete = models.PROTECT)
+	blood_group = models.CharField(max_length=3, choices = blood_group_choices)
+	name = models.CharField(max_length=500)
+	mobile = models.CharField(max_length=15, unique=True)
+	alternate_mobile = models.CharField(max_length=15, blank=True, null=True)
+	address = models.TextField(null=True, blank=True)
+	verified = models.BooleanField(default=True)
+	lat = models.FloatField(null=True, blank=True)
+	long = models.FloatField(null=True, blank=True)
+	updated_at = models.DateTimeField(auto_now=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+	requested_verification = models.BooleanField(default=False)
+	emergency_contact = models.CharField(max_length=50, null=True, blank=True)
+	request_edit = models.BooleanField(default=False)
+	edit = models.TextField(blank=True, null=True)
+	note = models.TextField(null=True, blank=True)
+
+	def __str__(self):
+		return self.city + " - " + self.blood_group

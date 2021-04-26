@@ -7,8 +7,11 @@ from .models import (
     Facility,
     Service,
     Hospital,
-    Experience
+    Experience,
+    Plasma,
 )
+
+admin.site.site_header = "DoorstepDelhi - COVID-19 Resources"
 
 
 class CityAdmin(ImportExportModelAdmin):
@@ -183,9 +186,49 @@ class ExperienceAdmin(ImportExportModelAdmin):
     ]
 
 
+class PlasmaAdmin(ImportExportModelAdmin):
+    list_display = [
+        'city',
+        'blood_group',
+        'name',
+        'mobile',
+        'verified',
+        'updated_at',
+        'requested_verification',
+        'emergency_contact',
+        'request_edit',
+    ]
+    list_editable = [
+        'verified',
+        'requested_verification',
+        'request_edit',
+    ]
+    list_display_links = [
+        'city',
+        'blood_group',
+        'name',
+        'mobile',
+        'emergency_contact',
+    ]
+    list_filter = [
+        'city',
+        'blood_group',
+        'verified',
+        'requested_verification',
+        'request_edit',
+    ]
+    search_fields = [
+        'name',
+        'mobile',
+        'alternate_mobile',
+        'note',
+    ]
+
+
 admin.site.register(State)
 admin.site.register(City, CityAdmin)
 admin.site.register(Facility, FacilityAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Hospital, HospitalAdmin)
 admin.site.register(Experience, ExperienceAdmin)
+admin.site.register(Plasma, PlasmaAdmin)
