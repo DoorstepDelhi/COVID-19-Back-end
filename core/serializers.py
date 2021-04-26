@@ -8,6 +8,8 @@ from .models import (
     Hospital,
     Volunteer,
     Experience,
+    Plasma,
+    Request,
 )
 
 
@@ -161,6 +163,48 @@ class ExperienceSerializer(serializers.ModelSerializer):
             'created_at',
             'visible',
             'available',
+        ]
+
+class PlasmaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Plasma
+        fields = [
+            'id',
+            'city',
+            'blood_group',
+            'name',
+            'mobile',
+            'alternate_mobile',
+            'address',
+            'verified',
+            'lat',
+            'long',
+            'updated_at',
+            'created_at',
+            'requested_verification',
+            'emergency_contact',
+            'request_edit',
+            'edit',
+            'note',
+        ]
+
+
+class RequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Request
+        fields = [
+            'id',
+            'city',
+            'facility',
+            'name',
+            'mobile',
+            'alternate_mobile',
+            'created_at',
+            'note',
+            'fulfilled',
+            'fulfilled_on',
+            'urgent',
+            'volunteer_working',
         ]
 
 

@@ -19,6 +19,8 @@ from .models import (
     Hospital,
     Volunteer,
     Experience,
+    Plasma,
+    Request,
 )
 from .serializers import (
     StateSerializer,
@@ -28,6 +30,8 @@ from .serializers import (
     HospitalSerializer,
     VolunteerSerializer,
     ExperienceSerializer,
+    PlasmaSerializer,
+    RequestSerializer,
 )
 from .permission import IsAdminOrReadOnly, IsStaffOrReadOnly, ReadOrPostOnly
 
@@ -72,3 +76,15 @@ class ExperienceViewSet(viewsets.ModelViewSet):
     serializer_class = ExperienceSerializer
     permission_classes = [ReadOrPostOnly]
     queryset = Experience.objects.all()
+
+
+class PlasmaViewSet(viewsets.ModelViewSet):
+    serializer_class = PlasmaSerializer
+    permission_classes = [ReadOrPostOnly]
+    queryset = Plasma.objects.all()
+
+
+class RequestViewSet(viewsets.ModelViewSet):
+    serializer_class = RequestSerializer
+    permission_classes = [ReadOrPostOnly]
+    queryset = Request.objects.all()
