@@ -14,7 +14,7 @@ from .models import (
 class StateSerializer(serializers.ModelSerializer):
     class Meta:
         model = State
-        fields = ['name']
+        fields = ['id', 'name']
 
 
 class CitySerializer(serializers.ModelSerializer):
@@ -22,13 +22,13 @@ class CitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = City
-        fields = ['state', 'name', 'verified']
+        fields = ['id', 'state', 'name', 'verified']
 
 
 class FacilitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Facility
-        fields = ['name', 'description', 'deliver']
+        fields = ['id', 'name', 'description', 'deliver']
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -38,6 +38,7 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = [
+            'id',
             'city',
             'facility',
             'name',
@@ -82,6 +83,7 @@ class HospitalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hospital
         fields = [
+            'id',
             'city',
             'name',
             'mobile',
@@ -119,6 +121,7 @@ class VolunteerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Volunteer
         fields = [
+            'id',
             'user',
             'city',
             'name',
@@ -148,6 +151,7 @@ class ExperienceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
         fields = [
+            'id',
             'service',
             'name',
             'mobile',
