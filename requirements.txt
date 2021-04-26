@@ -1,0 +1,11 @@
+django
+django-import-export
+django-cors-headers
+django-heroku
+django-filter
+django-rest-auth
+djangorestframework
+drf-yasg
+gunicorn
+django-allauth
+python-decouple
