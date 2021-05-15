@@ -59,7 +59,7 @@ class ServiceViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminOrReadOnly, IsStaffOrReadOnly]
 
     def get_queryset(self):
-        queryset = Service.objects.filter(verified=True).order_by('-updated_at')
+        queryset = Service.objects.all().order_by('-verified', '-updated_at')
         if self.request.query_params.get("search", None):
             search = self.request.query_params.get("search", None)
             queryset = queryset.filter(
@@ -87,13 +87,13 @@ class ServiceViewSet(viewsets.ModelViewSet):
 class HospitalViewSet(viewsets.ModelViewSet):
     serializer_class = HospitalSerializer
     permission_classes = [IsAdminOrReadOnly, IsStaffOrReadOnly]
-    queryset = Hospital.objects.filter(verified=True)
+    queryset = Hospital.objects.order_by('-verified')
 
 
 class VolunteerViewSet(viewsets.ModelViewSet):
     serializer_class = VolunteerSerializer
     permission_classes = [IsAdminOrReadOnly, IsStaffOrReadOnly]
-    queryset = Volunteer.objects.filter(verified=True)
+    queryset = Volunteer.objects.order_by('-verified')
 
 
 class ExperienceViewSet(viewsets.ModelViewSet):
@@ -101,14 +101,14 @@ class ExperienceViewSet(viewsets.ModelViewSet):
     permission_classes = [ReadOrPostOnly]
 
     def get_queryset(self):
-        queryset = Experience.objects.all().order_by('-updated_at')
+        queryset = Experience.objects.all().order_by('-verified', '-updated_at')
         return queryset
 
 
 class PlasmaViewSet(viewsets.ModelViewSet):
     serializer_class = PlasmaSerializer
     permission_classes = [ReadOrPostOnly]
-    queryset = Plasma.objects.filter(verified=True).order_by('-updated_at')
+    queryset = Plasma.objects.all().order_by('-verified', '-updated_at')
 
 
 class RequestViewSet(viewsets.ModelViewSet):
