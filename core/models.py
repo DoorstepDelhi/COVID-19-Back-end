@@ -158,7 +158,7 @@ class Plasma(models.Model):
 	note = models.TextField(null=True, blank=True)
 
 	def __str__(self):
-		return self.city + " - " + self.blood_group
+		return str(self.city) + " - " + str(self.blood_group)
 
 
 class Request(models.Model):
