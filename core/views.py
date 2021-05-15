@@ -68,19 +68,19 @@ class ServiceViewSet(viewsets.ModelViewSet):
 
         if self.request.query_params.get("cities", None):
             cities = self.request.query_params.get("cities", None)
-            queryset = queryset.filter(city__icontains__in = cities)
+            queryset = queryset.filter(city__name__icontains__in = cities)
 
         if self.request.query_params.get("facilities", None):
             facilities = self.request.query_params.get("facilities", None)
-            queryset = queryset.filter(facility__icontains__in = facilities)
+            queryset = queryset.filter(facility__name__icontains__in = facilities)
 
         if self.request.query_params.get("city", None):
             city = self.request.query_params.get("city", None)
-            queryset = queryset.filter(city__icontains = city)
+            queryset = queryset.filter(city__name__icontains = city)
 
         if self.request.query_params.get("facility", None):
             facility = self.request.query_params.get("facility", None)
-            queryset = queryset.filter(facility__icontains = facility)
+            queryset = queryset.filter(facility__name__icontains = facility)
         return queryset
 
 
