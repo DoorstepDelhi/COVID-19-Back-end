@@ -70,6 +70,7 @@ class LogEntryAdmin(admin.ModelAdmin):
 
 class CityAdmin(ImportExportModelAdmin):
     list_display = [
+                    'id',
                     'name',
                     'state',
                     'verified',
@@ -92,6 +93,7 @@ class CityAdmin(ImportExportModelAdmin):
 
 class FacilityAdmin(ImportExportModelAdmin):
     list_display = [
+        'id',
         'name',
         'deliver',
     ]
@@ -112,6 +114,7 @@ class FacilityAdmin(ImportExportModelAdmin):
 
 class ServiceAdmin(ImportExportModelAdmin):
     list_display = [
+        'id',
         'name',
         'mobile',
         'verified',
@@ -149,6 +152,7 @@ class ServiceAdmin(ImportExportModelAdmin):
 
 class HospitalAdmin(ImportExportModelAdmin):
     list_display = [
+        'id',
         'name',
         'mobile',
         'verified',
@@ -182,6 +186,7 @@ class HospitalAdmin(ImportExportModelAdmin):
 
 class VolunteerAdmin(ImportExportModelAdmin):
     list_display = [
+        'id',
         'name',
         'mobile',
         'verified',
@@ -211,6 +216,7 @@ class VolunteerAdmin(ImportExportModelAdmin):
 
 class ExperienceAdmin(ImportExportModelAdmin):
     list_display = [
+        'id',
         'service',
         'name',
         'mobile',
@@ -242,6 +248,7 @@ class ExperienceAdmin(ImportExportModelAdmin):
 
 class PlasmaAdmin(ImportExportModelAdmin):
     list_display = [
+        'id',
         'city',
         'blood_group',
         'name',
@@ -281,6 +288,7 @@ class PlasmaAdmin(ImportExportModelAdmin):
 
 class RequestAdmin(ImportExportModelAdmin):
     list_display = [
+        'id',
         'city',
         'facility',
         'name',
