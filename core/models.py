@@ -13,9 +13,10 @@ class State(models.Model):
 
 
 class City(models.Model):
-	state = models.ForeignKey("core.State", on_delete = models.CASCADE)
+	state = models.ForeignKey("core.State", on_delete = models.CASCADE, null=True)
 	name = models.CharField(max_length = 120)
 	verified = models.BooleanField(default=False)
+	hindi_name = models.CharField(max_length = 256, blank=True, null=True)
 
 	def __str__(self):
 		return self.name
